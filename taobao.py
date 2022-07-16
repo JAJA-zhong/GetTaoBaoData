@@ -136,8 +136,3 @@ class Tk_TaoBao:
         self.key()
 
         win.mainloop()  # 主程序
-
-
-if __name__ == '__main__':
-    win = Tk_TaoBao()
-    win.win()
