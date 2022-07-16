@@ -69,7 +69,7 @@ class GetTaoBao:
             writer.writerow(head)
             for content in data:
                 count += 1
-                name = content["raw_title"]  # 宝贝名称
+                name = content["raw_title"].replace(' ', '').replace('丨', '')
                 price = content["view_price"]  # 价格
                 number = content["view_sales"]  # 收货人数
                 nick = content['nick']  # 店铺名称
