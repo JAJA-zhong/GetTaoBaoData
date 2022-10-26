@@ -11,7 +11,7 @@ def main():
         你的选择是（1/2）：''')
         if type == "1":
             jd = jingdong.Tk_JingDong()
-            jd.win()
+            jd.jd_win()
         elif type == "2":
             tb = taobao.Tk_TaoBao()
             tb.win()

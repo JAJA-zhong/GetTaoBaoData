@@ -38,18 +38,22 @@ class GetJingDong():
                 res_text = BeautifulSoup(res.text, 'html.parser')
                 commodityinfo = res_text.find_all('div', class_='gl-i-wrap')
                 for info in commodityinfo:
-                    title = info.find('div', class_="p-name p-name-type-2").find('em').text.replace(' ', '').replace(
-                        '\n', '').replace("¥", '')  # 商品信息
-                    Promotional = info.find('div', class_="p-name p-name-type-2").find('a')['title'].replace(' ',
-                                                                                                             '').replace(
-                        '\n', '').replace("¥", '')  # 促销信息
-                    Price = info.find('strong').text.replace(' ', '').replace('\n', '').replace("¥", '')  # 价格
-                    link = "https:" + info.find('div', class_="p-name p-name-type-2").find('a')['href'].replace(' ',
-                                                                                                                '').replace(
-                        '\n', '')  # 连接
-                    shop = info.find('span', class_='J_im_icon').find('a')['title'].replace(' ', '').replace('\n',
-                                                                                                             '')  # 店铺
-                    shoptype = info.find('div', class_='p-icons').text.replace(' ', '').replace('\n', '')  # 店铺类型
+                    try:
+                        title = info.find('div', class_="p-name p-name-type-2").find('em').text.replace(' ', '').replace(
+                            '\n', '').replace("¥", '')  # 商品信息
+                        Promotional = info.find('div', class_="p-name p-name-type-2").find('a')['title'].replace(' ',
+                                                                                                                 '').replace(
+                            '\n', '').replace("¥", '')  # 促销信息
+                        Price = info.find('strong').text.replace(' ', '').replace('\n', '').replace("¥", '')  # 价格
+                        link = "https:" + info.find('div', class_="p-name p-name-type-2").find('a')['href'].replace(' ',
+                                                                                                                    '').replace(
+                            '\n', '')  # 连接
+                        shop = info.find('span', class_='J_im_icon').find('a')['title'].replace(' ', '').replace('\n',
+                                                                                                                 '')  # 店铺
+                        shoptype = info.find('div', class_='p-icons').text.replace(' ', '').replace('\n', '')  # 店铺类型
+                    except Exception as e:
+                        print(e)
+                        pass
                     print(count, title, Price, Promotional, link, shop, shoptype)
                     try:
                         writer.writerow([count, title, Price, Promotional, link, shop, shoptype])  #写入csv
@@ -57,17 +61,18 @@ class GetJingDong():
                         print("-----写入出错-----")
                         pass
                     count += 1#序号增量
-                    time.sleep(0.2)
+                    time.sleep(0.5)
 
 
 class Tk_JingDong():
 
-    def main(self, *args):
+    def start(self, *args):
         try:
             jingdong=GetJingDong(enfocus.get(),enpages.get())
             jingdong.get_info()
             tk.messagebox.showinfo("消息提示", "抓取完成!")
-        except:
+        except Exception as e:
+            print(e)
             tk.messagebox.showerror("消息提示", "抓取失败!")
 
     def key(self):
@@ -75,9 +80,9 @@ class Tk_JingDong():
         bt1.grid(row=2, column=1, padx=(10, 0), pady=10)
 
         # 当按下鼠标左键的时候，按钮触发方法
-        bt1.bind("<Button-1>", self.main)
+        bt1.bind("<Button-1>", self.start)
 
-    def win(self):
+    def jd_win(self):
         global enfocus, enpages
         win = tk.Tk()  # 创一个窗口的对象
         win.title("京东数据抓取工具")  # 设置窗体的标题
@@ -94,7 +99,7 @@ class Tk_JingDong():
         enfocus = tk.Entry(win)
         enfocus.grid(row=0, column=1, ipadx=60, pady=10)
 
-        pages = tk.Label(win, text="页数（每页30）")
+        pages = tk.Label(win, text="页数（每页30条）")
         pages.grid(row=1, column=0, pady=10)
         enpages = tk.Entry(win)
         enpages.grid(row=1, column=1, ipadx=60, pady=10)

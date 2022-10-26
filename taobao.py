@@ -33,8 +33,7 @@ class GetTaoBao:
         start_url = "https://s.taobao.com/search?"
         headers = {
             "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-            "cookie": r"cna=PM4PGe5IlzECAXQVD8EbXemH; tracknick=\u5BB6\u5BB6\u5546\u4E1A; _uab_collina=162821804995209647858107; miid=3757869492043328732; enc=osTaUsLgBp8ey9n6tnzhrr33Bt7yJEMpJ1b65a4m8BzhPSbNt5NwkOMyvCP/WvPANueaPUVZHo5kpTrsk6acaQ==; thw=cn; sgcookie=E100vaQIWQ+L5AdlAtTzSItnF+WUmreu2b+aETVugecU7YVRGjyo9QJURBD+E+NErKeUa+qAjq2FVZ+2PZ9W+/F5bWYlVGQhLrU8VWpv5Gqc/Xur7OFdB9EadynHwr37cdsA; uc3=lg2=URm48syIIVrSKA==&nk2=30tKUmiDUKc=&id2=UU6oKt9sUs63&vt3=F8dCvCPU0Pb02QvIZL8=; lgc=\u5BB6\u5BB6\u5546\u4E1A; uc4=nk4=0@3b8IvKu8JdBvtM3EChzCQ+AZNA==&id4=0@U2xlpFDZPEfPDETwMRxZRoDSHaM=; _cc_=VT5L2FSpdA==; mt=ci=-1_0; t=3169a7d30354ba7c68f00da216deda16; cookie2=25db1cb21dd854476591d79781a8734d; _tb_token_=7133576e31e4a; _m_h5_tk=4fa41447e4c9ffb5f100fcbc549943f7_1657858545787; _m_h5_tk_enc=d858a7086419e1b3f7d98d8285790ad8; xlly_s=1; alitrackid=www.taobao.com; lastalitrackid=www.taobao.com; uc1=cookie14=UoexNTlbJMjAug==; JSESSIONID=7EFE1263A4A977076475A083876EFF95; isg=BObmTjUMuKHnu2xm_4FgzljyN1xoxyqBw2gALtCN64noU4RtOFJmkYlhr09feyKZ; l=eBIYydy7LfGLN59BBO5aourza77TwQAbzsPzaNbMiInca1PVtUs5KNCHHAVBSdtjgtfjyetzgmaXvdEDri4dg2HvCbKrCyCkQYvw-; tfstk=cVilBRGuV4zSRsDZL0ZWvtNmsQ8OaOSUsDoj0L59N9lYgsk4UsfduNyWCKVk1Q7C."
-            ,
+            "cookie": r"",
             "referer": "https://s.taobao.com/search?q=&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20210303&ie=utf8&sort=sale-desc"
         }
         r = requests.get(start_url, headers=headers, params=params)
@@ -46,16 +45,14 @@ class GetTaoBao:
                 price = data["view_price"]  # 价格
                 number = data["view_sales"]  # 收货人数
                 nick = data['nick']  # 店铺名称
-
                 icon = data['icon']  # 卖家类型
                 inner = ""
                 for innerText in icon:
                     inner += innerText['innerText'] + '--'
-
                 item_loc = data['item_loc']  # 发货地址
                 detail_url = "https:" + data['detail_url']  # 宝贝地址
                 pic_url = "https:" + data['pic_url']  # 图片地址
-                time.sleep(0.2)
+                time.sleep(0.5)
                 print(name, price, number, nick, inner, item_loc, detail_url, pic_url)
             return content
         else:
@@ -128,7 +125,7 @@ class Tk_TaoBao:
         enfocus = tk.Entry(win)
         enfocus.grid(row=0, column=1, ipadx=60, pady=10)
 
-        pages = tk.Label(win, text="页数（每页44）")
+        pages = tk.Label(win, text="页数（每页44条）")
         pages.grid(row=1, column=0, pady=10)
         enpages = tk.Entry(win)
         enpages.grid(row=1, column=1, ipadx=60, pady=10)
