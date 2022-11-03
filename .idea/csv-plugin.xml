@@ -3,7 +3,21 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\固体酒精_20221026161651.csv">
+        <entry key="\京东_几条鱼_20221103152922.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\固体酒精_20221103133036.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\格子衫_20221103124401.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
