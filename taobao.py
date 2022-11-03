@@ -38,7 +38,7 @@ class GetTaoBao:
         start_url = "https://s.taobao.com/search?"
         headers = {
             "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-            "cookie": r"_uab_collina=162821804995209647858107; enc=osTaUsLgBp8ey9n6tnzhrr33Bt7yJEMpJ1b65a4m8BzhPSbNt5NwkOMyvCP/WvPANueaPUVZHo5kpTrsk6acaQ==; thw=cn; t=872ef23db9fddc6783481976905a2be9; _m_h5_tk=f388bd974d640bd17acfaab0841cdd00_1667456984897; _m_h5_tk_enc=8c2fbca679071afbbf357db4d5282c5c; xlly_s=1; alitrackid=www.taobao.com; cookie2=1498463e966881203d056c659859f6b5; _tb_token_=a663d305337b; _samesite_flag_=true; sgcookie=E100KrXlcatMumXN7faWV+ULUGV1kUcyDm3XE+ZjV0leT4zHn8CKdFVbLVPtcJOkUPUyJFR4WscY2WmaeIQantqQ7QNL+6aBKeYIxb0xF+SwrQeXJckCT8pGYkPUkMBPQXG7; lastalitrackid=login.taobao.com; mt=ci=0_0; tracknick=; cna=PM4PGe5IlzECAXQVD8EbXemH; JSESSIONID=CC132B64B07ABB7ED641C4B78D530674; tfstk=cy9cBmYchI5X1zD9PE6jdiTPaGhdaeyN-dJWU0btCWAfJPvP0s0YaWSjA0bmRqP1.; isg=BHt7DeZ3nOFEYaGFohYlnc3NCl_l0I_S-CNnSW04yHqRzJmu9aRJItlO5myCbOfK; l=eBIYydy7LfGLNuTDBO5aFurza77O0IRbzsPzaNbMiInca6eltFZQ8NCUmJ89SdtjgtffTetr9CVkDdn6Pgzdg2HvCbKrCyClkxJw-",  # 必须输入cookie才能获取数据
+            "cookie": r"输入你的cookie",  # 必须输入cookie才能获取数据
             "referer": "https://s.taobao.com/search?q=&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20210303&ie=utf8&sort=sale-desc"
         }
         try:
